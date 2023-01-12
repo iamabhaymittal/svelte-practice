@@ -1,27 +1,21 @@
 <script>
   import Face from "./Face.svelte";
   import Container from "./Container.svelte";
+  import Header from "./Header.svelte";
+  import { each } from "svelte/internal";
+  import Buttons from "./Buttons.svelte";
   let say = false;
-  setTimeout(() => {
-    say = true;
-  }, 2000)
-</script>
-
-<Container>
-  {#if say}
-    <div>
-      Hi!
-    </div>
-  {:else if !say}
-    not saying anything....
-  {/if}
-  {#each [2,1,0] as index }
-  <Face {index}  />
-    
-  {/each}
   
+</script>
+{#if say}
+    <Header />
+  
+  {/if}
+<Container>
+  <Buttons on:click={(e) => {say = e.detail}} />
 
 </Container>
+  
 
 <style>
   div {
